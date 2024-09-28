@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Sports Psychology Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #D5B93A; /* Warm beige for background */
+            color: #7C2E27; /* Deep red for text */
+            margin: 0;
+            padding: 0;
+            font-size: 1.1em; /* Increased body text size */
+            line-height: 1.6; /* Increased line height for better spacing */
+        }
+
+        /* Language selection dropdown */
+        .language-selector {
+            margin: 15px;
+            text-align: center; /* Center aligned */
+        }
+
+        /* Main content styling */
+        main {
+            padding: 15px;
+            width: 100%; /* Full width */
+            box-sizing: border-box;
+            background-color: #D5B93A; /* Golden yellow for main area */
+            border-radius: 8px; /* Slight rounding */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #C95A28; /* Terracotta orange for headers */
+        }
+
+        p {
+            margin-bottom: 15px; /* Increased margin for better spacing */
+            font-size: 1.1em; /* Slightly increased paragraph text size */
+            color: #7C2E27; /* Deep red for text */
+        }
+
+        /* "How?" section matches the overall style */
+        .how {
+            font-size: 1.1em;
+            color: #7C2E27; /* Deep red text */
+            font-weight: 600;
+        }
+
+        /* Opportunity Countdown styling */
+        #countdown {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+            background-color: #D5B93A; /* Matching background color for countdown */
+            color: #7C2E27; /* Deep red text */
+            border: 2px solid #C95A28; /* Terracotta orange border */
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Space below countdown */
+        }
+
+        /* Contact form styling */
+        #contact-form {
+            margin-bottom: 20px;
+            border: 2px solid #C95A28; /* Terracotta orange border */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Prevent scrolling */
+            background-color: #D5B93A; /* Golden yellow background for form */
+        }
+
+        /* New wrapper for specific sections */
+        .section-wrapper {
+            border: 2px solid #C95A28; /* Terracotta orange border */
+            background-color: #D5B93A; /* Same background as the rest of the page */
+            padding: 15px; /* Padding around the content */
+            margin-bottom: 20px; /* Space below each section */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        /* Responsive iframe */
+        #contact-form iframe {
+            width: 100%;
+            height: 1200px; /* Adjusted height for no scroll */
+            border: none; /* Remove border */
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1, h2 {
+                font-size: 1.2em; /* Adjusted for mobile */
+            }
+
+            p {
+                font-size: 1em; /* Ensure consistent size on mobile */
+            }
+        }
+    </style>
+    <script>
+        function changeLanguage(lang) {
+            const texts = {
+                sl: {
+                    intro: "Sem študent biopsihologije, ki išče športnike, stare 13-17 let, da jim pomagam postati profesionalci in prvaki v katerem koli športu—znotraj in zunaj igrišča—ne glede na telesne sposobnosti ali ozadje.",
+                    how: "Kako?",
+                    howText: "Ne bom jim povedal, kaj naj mislijo; namesto tega jim bom ponudil ideje in perspektive, ki jih bodo izzvale, da bodo razmišljali sami in se učili o sebi, svojem športu, življenju in svetu okoli sebe.",
+                    teachingText: "Ne začnem takoj učiti. Najprej se spoznamo, zgradimo zaupanje in ugotovimo, ali smo pravi par. Potrebujem čas, da odstranimo vse plasti osebe, preden začnemo graditi.",
+                    imaginationText: "Delal bom na njihovi domišljiji, delil zgodbe in primere preteklih prvakov ter poučeval, kaj je potrebno, da postanejo takšni.",
+                    connectionText: "To je popoln trenutek za povezovanje, trenutek, ko oba postavljava svoja imena. Izpolnite obrazec spodaj, da me kontaktirate.",
+                    offerText: "Ponudba za stik traja le 30 dni, po tem bom delal le po priporočilu. V sporočilu mi dajte razlog, zakaj bi moral delati z vašim otrokom.",
+                    countdownTitle: "Odštevanje priložnosti"
+                },
+                en: {
+                    intro: "I am a master’s student of biopsychology looking for athletes aged 13-17 to work with them on becoming professionals and champions in any sport—inside and outside of the field—regardless of physical abilities or background.",
+                    how: "How?",
+                    howText: "I won't tell them what to think; instead, I will offer ideas and perspectives that will challenge them to think for themselves and allow them to learn about themselves, their sport, life, and the world around them.",
+                    teachingText: "I don't start teaching immediately. First, we get to know each other, build trust, and determine if we are the right fit. I need time to peel away all the layers of the person before we start to build.",
+                    imaginationText: "I'll work on their imagination, share stories and examples of past champions, and teach what it takes to become one.",
+                    connectionText: "This is the perfect time to connect, the moment when we are both establishing our names. Fill out the form below to reach out.",
+                    offerText: "The contact offer lasts only 30 days, after which I will only work by referral. In your message, give me a reason why I should work with your child.",
+                    countdownTitle: "Opportunity Countdown"
+                }
+            };
+
+            const elements = {
+                intro: document.getElementById("intro"),
+                how: document.getElementById("how"),
+                howText: document.getElementById("howText"),
+                teachingText: document.getElementById("teachingText"),
+                imaginationText: document.getElementById("imaginationText"),
+                connectionText: document.getElementById("connectionText"),
+                offerText: document.getElementById("offerText"),
+                countdownTitle: document.getElementById("countdownTitle"),
+            };
+
+            Object.keys(elements).forEach(key => {
+                elements[key].innerText = texts[lang][key];
+            });
+        }
+    </script>
+</head>
+<body onload="changeLanguage('en')">
+    <div class="language-selector" style="text-align: center;">
+        <select onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="sl">Slovenian</option>
+        </select>
+    </div>
+    <main>
+        <div class="section-wrapper">
+            <p id="intro"></p>
+            <p id="how" class="how"></p>
+            <p id="howText"></p>
+            <p id="teachingText"></p>
+            <p id="imaginationText"></p>
+            <p id="connectionText"></p>
+            <p id="offerText"></p>
+        </div>
+
+        <div id="countdown">
+            <h3 id="countdownTitle"></h3>
+            <div id="timer"></div>
+        </div>
+
+        <div id="contact-form">
+            <!-- Updated Google Form link -->
+            <iframe src="https://docs.google.com/forms/d/12YPEC1-D6gsWztcXGJiOHq_HCL0p5dRV5RBALvdL22w/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+    </main>
+    <script>
+        // Countdown timer logic
+        const countdownDate = new Date("2024-10-30T00:00:00").getTime();
+
+        const timer = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
