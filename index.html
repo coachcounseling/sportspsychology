@@ -174,28 +174,28 @@
         </div>
     </main>
     <script>
-        // Countdown Timer
-        const countdownDate = new Date();
-        countdownDate.setDate(countdownDate.getDate() + 30);
-        const countdownElement = document.getElementById("timer");
+    // Countdown Timer
+    const countdownDate = new Date("2024-11-01T00:00:00"); // Set the countdown date to November 1st, 2024 at midnight
+    const countdownElement = document.getElementById("timer");
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            if (distance < 0) {
-                clearInterval(interval);
-                countdownElement.innerHTML = "EXPIRED";
-            }
+        countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        if (distance < 0) {
+            clearInterval(interval);
+            countdownElement.innerHTML = "EXPIRED";
         }
+    }
 
-        const interval = setInterval(updateCountdown, 1000);
-    </script>
+    const interval = setInterval(updateCountdown, 1000);
+</script>
+
 </body>
 </html>
